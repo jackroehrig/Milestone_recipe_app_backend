@@ -1,0 +1,21 @@
+{
+  "name": "Milestone_recipe_app_backend",
+  "version": "1.0.0",
+  "description": "hi world",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon sign_up.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sjxliu/Milestone_recipe_app_backend.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sjxliu/Milestone_recipe_app_backend/issues"
+  },
+  "homepage": "https://github.com/sjxliu/Milestone_recipe_app_backend#readme"
+}
