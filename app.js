@@ -7,7 +7,8 @@ const userRoutes = require("./routes/users");
 const authRoutes = require("./routes/auth");
 
 //DB connection
-connection();
+//Stays open for other mongoose scripts to access during runtime
+connection(); //Async due to connection taking time
 
 //Middleware
 app.use(express.json());
