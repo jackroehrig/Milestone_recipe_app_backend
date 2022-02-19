@@ -1,11 +1,11 @@
 {
   "name": "Milestone_recipe_app_backend",
   "version": "1.0.0",
-  "description": "hi world",
+  "description": "Recipe App Backend to handle incoming requests from frontend (API)",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon sign_up.js"
+    "start": "node app.js"
   },
   "repository": {
     "type": "git",
@@ -20,10 +20,14 @@
   "homepage": "https://github.com/sjxliu/Milestone_recipe_app_backend#readme",
   "dependencies": {
     "bcrypt": "^5.0.1",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.0",
+    "express": "^4.17.3",
     "express-session": "^1.17.2",
     "joi": "^17.6.0",
     "joi-password-complexity": "^5.1.0",
     "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.2.2",
     "passport": "^0.5.2",
     "passport-local": "^1.0.0",
     "passport-local-mongoose": "^6.1.0"
