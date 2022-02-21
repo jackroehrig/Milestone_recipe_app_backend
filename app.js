@@ -18,5 +18,5 @@ app.use(cors());
 app.use("/api/users", userRoutes)
 app.listen("/api/auth", authRoutes)
 
-const port = process.env.PORT || 4000;
-app.listen(port, () => console.log(`Port ${port} has risen...`));
+const Port = process.env.PORT || 4000;
+app.listen(Port, () => console.log(`Port ${Port} has risen...`));
