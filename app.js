@@ -1,22 +1,32 @@
-require("dotenv").config();
+// DEPENDENCIES
 const express = require("express");
-const app = express();
+const bodyParser = require('body-parser')
 const cors = require("cors");
-const connection = require("./db");
-const userRoutes = require("./routes/users");
-const authRoutes = require("./routes/auth");
+require("dotenv").config();
 
+
+// const connection = require("./db"); Might not be needed here
 //DB connection
 //Stays open for other mongoose scripts to access during runtime
-connection(); //Async due to connection taking time
+// connection(); //Async due to connection taking time
 
-//Middleware
-app.use(express.json());
+// MIDDLEWARE
+const app = express();
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({extended: false}))
 app.use(cors());
 
 //Routes
-app.use("/api/users", userRoutes)
-app.listen("/api/auth", authRoutes)
+app.get('/', (req, res) => {
+    res.send('Welcome to the recipe api!')
+})
+
+app.use("/api/users", require("./routes/users"))
+app.listen("/api/auth", require("./routes/auth"))
+
+app.get('*', (req, res) => {
+    res.status(404).send('Sorry, couldn\'t find that endpoint :(')
+})
 
 const Port = process.env.PORT || 4000;
 app.listen(Port, () => console.log(`Port ${Port} has risen...`));
