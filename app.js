@@ -21,8 +21,9 @@ app.get('/', (req, res) => {
     res.send('Welcome to the recipe api!')
 })
 
-app.use("/api/users", require("./routes/users"))
-app.listen("/api/auth", require("./routes/auth"))
+app.use("/users", require("./routes/users"))
+
+app.use("/api/auth", require("./routes/auth"))
 
 app.get('*', (req, res) => {
     res.status(404).send('Sorry, couldn\'t find that endpoint :(')
