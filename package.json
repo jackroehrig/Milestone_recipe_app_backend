@@ -1,6 +1,9 @@
 {
   "name": "Milestone_recipe_app_backend",
   "version": "1.0.0",
+  "engines": {
+    "node": "16.14.0"
+  },
   "description": "Recipe App Backend to handle incoming requests from frontend (API)",
   "main": "app.js",
   "scripts": {
@@ -23,6 +26,7 @@
     "cors": "^2.8.5",
     "dotenv": "^16.0.0",
     "express": "^4.17.3",
+    "heroku": "^7.59.2",
     "mongoose": "^6.2.2"
   }
 }

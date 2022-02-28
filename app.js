@@ -21,5 +21,4 @@ app.get('*', (req, res) => {
     res.status(404).send('Sorry, couldn\'t find that endpoint :(')
 })
 
-const Port = process.env.PORT || 4000;
-app.listen(Port, () => console.log(`Port ${Port} has risen...`));
+app.listen(process.env.PORT)
