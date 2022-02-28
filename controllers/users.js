@@ -15,12 +15,12 @@ users.get('/', (req, res) => {
 
 // Authenticate Login
 users.get('/auth', (req, res) => {
-  db.User.find({username: req.query.username})
+  db.User.findOne({username: req.query.username})
   .then(user => {
     if(user){
-      user.password == req.query.password ? res.send(1) : res.send(0)
+      user.password == req.query.password ? res.send({isLogged: 1}) : res.send({isLogged: 0})
     } else {
-      res.send(0)
+      res.send({isLogged: 0})
     }
   })
   .catch(err => {
