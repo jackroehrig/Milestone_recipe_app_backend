@@ -6,3 +6,6 @@ mongoose.connect(process.env.MONGO_URI, {
   useUnifiedTopology: true
 })
 
+module.exports.User = require('./users')
+module.exports.Favorite = require('./favorites')
+

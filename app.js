@@ -4,12 +4,6 @@ const bodyParser = require('body-parser')
 const cors = require("cors");
 require("dotenv").config();
 
-
-// const connection = require("./db"); Might not be needed here
-//DB connection
-//Stays open for other mongoose scripts to access during runtime
-// connection(); //Async due to connection taking time
-
 // MIDDLEWARE
 const app = express();
 app.use(bodyParser.json())
@@ -21,9 +15,7 @@ app.get('/', (req, res) => {
     res.send('Welcome to the recipe api!')
 })
 
-app.use("/users", require("./routes/users"))
-
-app.use("/api/auth", require("./routes/auth"))
+app.use("/users", require("./controllers/users"))
 
 app.get('*', (req, res) => {
     res.status(404).send('Sorry, couldn\'t find that endpoint :(')
