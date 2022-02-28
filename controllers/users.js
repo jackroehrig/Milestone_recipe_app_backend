@@ -18,7 +18,7 @@ users.get('/auth', (req, res) => {
   db.User.findOne({username: req.query.username})
   .then(user => {
     if(user){
-      user.password == req.query.password ? res.send({isLogged: 1}) : res.send({isLogged: 0})
+      user.password == req.query.password ? res.send({isLogged: 1, userId: user._id}) : res.send({isLogged: 0})
     } else {
       res.send({isLogged: 0})
     }
@@ -46,16 +46,16 @@ users.post("/", (req, res) => {
   db.User.findOne({username: req.body.username})
   .then(user => {
     if(user){
-      res.status(409).send({message: 'Username already taken', account: user})
+      res.status(409).send({message: 'Username already taken'})
     } else {
         db.User.create(req.body)
-      .then(() => {
-        res.status(202).send({message: 'Account created'})
-      })
-      .catch(err => {
-        console.log(err)
-        res.status(404).send({message: 'something went wrong'})
-      })
+          .then(user => {
+            res.status(202).send({itWorked: true, message: 'Account created', userId: user._id})
+          })
+          .catch(err => {
+            console.log(err)
+            res.status(404).send({message: 'something went wrong'})
+          })
     }
   })
   .catch(err => {
