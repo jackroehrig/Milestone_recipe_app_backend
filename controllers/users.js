@@ -15,7 +15,7 @@ users.get('/', (req, res) => {
 
 // Authenticate Login
 users.get('/auth', (req, res) => {
-  db.User.find(req.query.username)
+  db.User.find({username: req.query.username})
   .then(user => {
     if(user){
       user.password == req.query.password ? res.send(1) : res.send(0)
