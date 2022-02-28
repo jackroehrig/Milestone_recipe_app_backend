@@ -7,5 +7,5 @@ mongoose.connect(process.env.MONGO_URI, {
 })
 
 module.exports.User = require('./users')
-module.exports.Favorite = require('./favorites')
+module.exports.Favorite = require('./favorite')
 

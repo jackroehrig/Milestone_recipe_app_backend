@@ -32,12 +32,13 @@ users.get('/auth', (req, res) => {
 // Get User by Id
 users.get('/:id', (req, res) => {
   db.User.findById(req.params.id)
-  .then(user => {
-    res.send(user)
+  .populate('favorites')
+  .then(res => {
+    res.send({user: res})
   })
   .catch(err => {
     console.log(err)
-    res.status(404).send('something went wrong :(')
+    res.status(404).send({ message: 'something went wrong :('})
   })
 })
 
