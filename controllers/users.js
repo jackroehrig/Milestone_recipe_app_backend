@@ -1,6 +1,18 @@
 const users = require("express").Router();
 const db = require('../models')
 
+// Show Users
+users.get('/', (req, res) => {
+  db.User.find()
+  .then(users => {
+    res.status(200).send({userAccounts: users})
+  })
+  .catch(err => {
+    res.status(404).send({message: 'something went wrong'})
+    console.log(err)
+  })
+})
+
 // Authenticate Login
 users.get('/auth', (req, res) => {
   db.User.find(req.query.username)
