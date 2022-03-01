@@ -33,8 +33,8 @@ users.get('/auth', (req, res) => {
 users.get('/:id', (req, res) => {
   db.User.findById(req.params.id)
   .populate('favorites')
-  .then(res => {
-    res.send({user: res})
+  .then(response => {
+    res.send({user: response})
   })
   .catch(err => {
     console.log(err)
@@ -86,7 +86,6 @@ users.post('/:id/favorite', (req, res) => {
       user.favorites.push(favorite.id)
       user.save()
       .then(() => {
-        console.log('redirect here')
         res.status(200).send({message: 'favorite successfully added'})
       })
     })
@@ -102,7 +101,7 @@ users.post('/:id/favorite', (req, res) => {
 })
 
 // Delete Favorite Recipe
-users.delete('/:id/favorite/:favoriteId', (req, res) => {
+users.delete('/favorites/:favoriteId', (req, res) => {
   db.Favorite.findByIdAndDelete(req.params.favoriteId)
   .then(() => {
     res.status(200).send('successfully deleted')
